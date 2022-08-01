@@ -1,0 +1,30 @@
+{
+    "version": "1.0.0",
+    "discord": {
+        "clientId": "1003507747104510053",
+        "smallImageText": "WesterosCraft",
+        "smallImageKey": "seal-circle"
+    },
+    "rss": "https://kuroneko6423.com/articles/index.rss",
+    "servers": [
+        {
+            "id": "mod_kuroneko_Server_1",
+            "name": "Kuroneko Client",
+            "description": "身内のmod鯖です。",
+            "icon": "https://raw.githubusercontent.com/KuronekoServer/icon/main/kuroneko-logo.png",
+            "version": "0.0.1",
+            "address": "mc.kuroneko6423.com",
+            "minecraftVersion": "1.12.2",
+            "discord": {
+                "shortId": "kuroneko",
+                "largeImageText": "KuronekoServer - mc.kuroneko6423.com",
+                "largeImageKey": "logo"
+            },
+            "mainServer": true,
+            "autoconnect": true,
+            "modules": [
+                "モジュール・オブジェクトはこちら"
+            ]
+        }
+    ]
+}
