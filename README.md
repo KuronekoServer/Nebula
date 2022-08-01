@@ -1,25 +1,25 @@
 # Nebula
 
-Generate a distribution.json for Helios. Documentation on this format can be found [here][distro.md].
+KuronekoLauncher用のdistribution.jsonを生成します。このフォーマットに関するドキュメントは [ここ][distro.md] にあります。
 
 ## Requirements
 
 * Node.js 16
 * Java 8+ (https://adoptopenjdk.net/)
-  * This is required to run the forge installer, process [XZ](https://tukaani.org/xz/format.html) files, and run bytecode analysis on mod files.
-  * Although 1.17 requires Java 16, the forge installer works with Java 8.
+  * Forge インストーラの実行、[XZ](https://tukaani.org/xz/format.html) ファイルの処理、および mod ファイルのバイトコード解析の実行に必要です。
+  * 1.17 は Java 16 を必要としますが、forge インストーラは Java 8 で動作します。
 
 
 ### Notes
 
-* Nebula is not 100% complete. Unfinished items are listed on the [TODO list](https://github.com/dscalzi/Nebula/issues/2).
-* Currently only supports creating Forge based servers. Vanilla support will be added when Helios v2 is complete.
+* Nebulaは100%完成しているわけではありません。未完成の項目は [TODO リスト](https://github.com/dscalzi/Nebula/issues/2) にリストアップされています。
+* 現在、Forge ベースのサーバーの作成のみをサポートしています。バニラサポートはヘリオス v2 が完了したときに追加される予定です。
 
 ## Setup
 
-1. Clone the repository
-2. Install the dependencies (`npm i`)
-3. Create a file called [`.env`][dotenvnpm] at the root directory of the cloned folder and set the required values.
+1. リポジトリをクローンする
+2. 依存関係をインストールする (`npm i`)
+3. クローンしたフォルダのルートディレクトリに [`.env`][dotenvnpm] というファイルを作成し、必要な値を設定する。
 
 Example
 ```properties
@@ -31,43 +31,43 @@ HELIOS_DATA_FOLDER=C:\Users\user\AppData\Roaming\Helios Launcher
 
 ## Usage
 
-Nebula is still being developed. Usage may change, but it has remained stable for some time now.
+Nebulaはまだ開発中です。使い方は変わるかもしれませんが、ここしばらくは安定した状態を保っています。
 
 #### TL;DR (Too Long; Didn't Read) Usage
 
-This is the barebones overall usage. Please read the rest of this document.
+これは、全体的な使い方の骨子となるものです。このドキュメントの残りの部分をお読みください。
 
-* Follow the setup instructions above.
-* Run the `init root` command.
-* Generate servers using the `g server` command.
-* Put all files in their respective folders (documented below).
-* Generate the distribution using the `g distro` command.
-* When in doubt, reread this document and then ask on Discord.
+* 上記のセットアップ手順に従ってください。
+* init root` コマンドを実行します。
+* g server` コマンドを使用してサーバを生成します。
+* すべてのファイルをそれぞれのフォルダに入れます (以下で説明します)。
+* g distro` コマンドを使用してディストリビューションを生成します。
+* 疑わしいことがあったら、このドキュメントを読み直してから Discord で質問してください。
 
 ## Commands
 
-Commands will be documented here. You can run any command with the `--help` option to view more information.
+コマンドはここで文書化されます。どのコマンドも `--help` オプションを付けて実行すると、より詳細な情報を見ることができます。
 
 ### Command Usage
 
-This explains how to run the commands listed below. There are a few ways to run commands, pick your preferred method.
+以下に示すコマンドの実行方法について説明します。コマンドの実行にはいくつかの方法がありますので、お好みの方法をお選びください。
 
-Example: To run `init root`, you would do `npm run start -- init root`.
+例 例：`init root` を実行するには、`npm run start -- init root` と実行します。
 
 *Recommended*
 
-* Run **`npm run start -- <COMMAND>`**
-  * *Why is this recommended? This command will compile the source code first.*
+* **npm run start -- <COMMAND>`** を実行します。
+  * *なぜこれが推奨されるのでしょうか？このコマンドは、最初にソースコードをコンパイルします。
 
 *Other*
 
 * Build the project using **`npm run build`**
 * Run **`node dist/index.js <COMMAND>`** OR **`npm run faststart -- <COMMAND>`**
-  * `faststart` is an alias to run the main file without building.
+  * `faststart` は、ビルドせずにメインファイルを実行するためのエイリアスです。.
 
 > ***Note:***
-> - ***If you modify any files, you will have to rebuild the project.***
-> - ***After pulling from git, you will have to rebuild the project.***
+> - ***ファイルを修正した場合は、プロジェクトを再構築する必要があります。***
+> - ***gitからpullした後、プロジェクトを再構築する必要があります。***
 >
 > ***npm start does this automatically.***
 
@@ -75,7 +75,7 @@ Example: To run `init root`, you would do `npm run start -- init root`.
 
 ### Init
 
-Init commands are used for initializing empty file structures.
+Initコマンドは、空のファイル構造を初期化するために使用されます。
 
 Aliases: [`init`, `i`]
 
@@ -85,7 +85,7 @@ __*Subcommands*__
 
 #### Init Root
 
-Generate an empty standard file structure. JSON schemas will also be generated.
+空の標準ファイル構造を生成する。JSONスキーマも生成される。
 
 `init root`
 
@@ -93,7 +93,7 @@ Generate an empty standard file structure. JSON schemas will also be generated.
 
 ### Generate
 
-Generate commands are used for generation.
+Generateコマンドは生成に使用されます。
 
 Aliases: [`generate`, `g`]
 
@@ -103,16 +103,16 @@ __*SubCommands*__
 
 #### Generate Server
 
-Generate an new server in the root directory. Options are provided to include forge in the generated server.
+ルート・ディレクトリーに新しいサーバーを生成します。生成されるサーバーに forge を含めるためのオプションが提供されます。
 
 `generate server <id> <version> <options>`
 
 Options:
 
-* `--forge <string>` Specify forge version. This is WITHOUT the minecraft version (ex. 14.23.5.2847)
-  * OPTIONAL (default: null)
-  * If not provided forge will not be enabled.
-  * You can provide either `latest` or `recommended` to use the latest/recommended version of forge.
+* `--forge <string>` forgeのバージョンを指定します。これは minecraft のバージョンを除いたものです (例: 14.23.5.2847)
+  * OPTIONAL (デフォルト: null)
+  * 提供されない場合、forge は有効になりません。
+  * `latest` または `recommended` を指定すると、forge の最新/推奨バージョンを使用することができます。
 
 >
 > Example Usage
@@ -124,28 +124,28 @@ Options:
 
 #### Generate Distribution
 
-Generate a distribution file from the root file structure.
+ルートファイル構造から配布ファイルを生成する。
 
 `generate distro [name]`
 
 Arguments:
-* `name` The name of the distribution file.
+* `name` ディストリビューションファイルの名前。
   * OPTIONAL (default: `distribution`)
 
 Options:
 
-* `--installLocal` Have the application install a copy of the generated distribution to the Helios data folder.
-  * OPTIONAL (default: false)
-  * This is useful to easily test the new distribution.json in dev mode on Helios.
-  * Tip: Set name to `dev_distribution` when using this option.
-* `--discardOutput` Delete cached output after it is no longer required. May be useful if disk space is limited.
-  * OPTIONAL (default: false)
-* `--invalidateCache` Invalidate and delete existing caches as they are encountered. Requires fresh cache generation.
-  * OPTIONAL (default: false)
+* `--installLocal` 生成された配布物のコピーを、アプリケーションがHeliosのデータフォルダにインストールするようにします。
+  * OPTIONAL (デフォルト: false)
+  * これは、Heliosのdevモードで、新しいdistribution.jsonを簡単にテストするのに便利です。
+  * Tip: Tip: このオプションを使うときは、nameに `dev_distribution` をセットしてください。
+* `--discardOutput` キャッシュされた出力が不要になったら、それを削除します。ディスクスペースが限られている場合に便利です。
+  * OPTIONAL (デフォルト: false)
+OPTIONAL (default: false) * `--invalidateCache` 既存のキャッシュを無効にして削除します。新しいキャッシュの生成が必要です。
+  * OPTIONAL (デフォルト: false)
 
 #### Notes
 
-As of Forge 1.13, the installer must be run to generate required files. The installer output is cached by default. This is done to speed up subsequent builds and allow Nebula to be run as a CI job. Options are provided to discard installer output (no caching) and invalidate caches (delete cached output and require fresh generation). To invalidate only a single version cache, manually delete the cached folder.
+Forge 1.13 では、必要なファイルを生成するためにインストーラーを実行する必要があります。インストーラの出力はデフォルトでキャッシュされます。これは以降のビルドを高速化し、Nebula を CI ジョブとして実行できるようにするためのものです。インストーラの出力を破棄する (キャッシュしない) オプションと、キャッシュを無効にする (キャッシュされた出力を削除し、新しい生成を要求する) オプションが用意されています。単一のバージョンキャッシュのみを無効にするには、キャッシュされたフォルダを手動で削除します。
 
 >
 > Example Usage
@@ -159,7 +159,7 @@ As of Forge 1.13, the installer must be run to generate required files. The inst
 
 #### Generate Schemas
 
-Generate the JSON schemas used by Nebula's internal types (ex. Distro Meta and Server Meta schemas). This command should be used to update the schemas when a change to Nebula requires it. You may need to reopen your editor for the new JSON schemas to take effect.
+Nebula の内部型(ex. Distro Meta と Server Meta スキーマ)で使用される JSON スキーマを生成する。このコマンドは、Nebula の変更に伴いスキーマの更新が必要になった場合に使用する必要があります。新しいJSONスキーマを有効にするために、エディタを再度開く必要があるかもしれません。
 
 `generate schemas`
 
@@ -167,7 +167,7 @@ Generate the JSON schemas used by Nebula's internal types (ex. Distro Meta and S
 
 ### Latest Forge
 
-Get the latest version of Forge.
+Forgeの最新バージョンを入手する。
 
 `latest-forge <version>`
 
@@ -175,7 +175,7 @@ Get the latest version of Forge.
 
 ### Recommended Forge
 
-Get the recommended version of Forge. If no recommended build is available, it will pull the latest version.
+Forge の推奨バージョンを取得します。推奨ビルドがない場合は、最新バージョンを取得します。
 
 `recommended-forge <version>`
 
@@ -183,54 +183,54 @@ Get the recommended version of Forge. If no recommended build is available, it w
 
 ## File Structure Setup (Tentative)
 
-Nebula aims to provide users with an information preserving structure for storing files. The application will use this structure to generate a full distribution.json for HeliosLauncher. For coherency, the distribution structure is modularized and encapsulated by a directory pattern. These encapsulations will be explained below. They can be generated manually or by using the commands documented above.
+Nebulaは、ファイルを保存するための情報を保持する構造をユーザーに提供することを目的としています。このアプリケーションは、この構造を利用して、HeliosLauncherの完全なdistribution.jsonを生成します。一貫性を保つために、ディストリビューション構造はモジュール化され、ディレクトリパターンによってカプセル化されています。これらのカプセル化については、以下で説明します。これらは手動で生成することもできますし、上記のコマンドを使用して生成することもできます。
 
 ### Distribution Encapsulation
 
-The distribution object is represented by the main root. All command output will be stored in this directory. The structure is documented below.
+配布オブジェクトは、メインルートで表されます。すべてのコマンド出力はこのディレクトリに保存されます。その構造は以下の通りです。
 
-Ex.
+例.
 
-* `TestRoot` The root directory which encapsulates the distribution.
-  * `servers` All server files are stored in this directory.
+* `TestRoot` ディストリビューションをカプセル化したルートディレクトリです。
+  * `servers` すべてのサーバーファイルはこのディレクトリに格納されます。
 
 ### Server Encapsulation
 
-Server objects are encapsulated in their own folders. The name of the server's folder contains both its id and version.
+サーバーオブジェクトは、それぞれのフォルダーにカプセル化されています。サーバーのフォルダー名には、そのidとバージョンの両方が含まれています。
 
-Ex.
+例.
 
 * `servers`
   * `TestServer-1.12.2` A server with id TestServer set to version 1.12.2.
 
-The server directory will contain files pertaining to that server.
+serverディレクトリには、そのサーバーに関連するファイルが格納されます。
 
 Ex.
 
-* `TestServer-1.12.2`
-  * `files` All modules of type `File`.
-  * `libraries` All modules of type `Library`
-  * `forgemods` All modules of type `ForgeMod`.
-    * This is a directory of toggleable modules. See the note below.
-  * `TestServer-1.12.2.png` Server icon file.
+* `TestServer-1.12.2`.
+  * `files` `File` 型のすべてのモジュール。
+  * `libraries` `Library` タイプの全てのモジュール。
+  * `forgemods` `ForgeMod` タイプの全てのモジュール。
+    * これはトグル可能なモジュールのディレクトリです。以下の注釈を参照してください。
+  * `TestServer-1.12.2.png` サーバーアイコンファイルです。
 
 #### Toggleable Modules
 
-If a directory represents a toggleable mod, it will have three subdirectories. You must filter your files into these three.
+もしディレクトリがトグル可能なMODを表すなら、それは3つのサブディレクトリを持つことになります。この3つにファイルをフィルタリングする必要があります。
 
-* `required` Modules that are required.
-* `optionalon` Modules that are optional and enabled by default.
-* `optionaloff` Modules that are optional and disabled by default.
+* `required` 必須のモジュールです。
+* `optionalon` オプションのモジュールで、デフォルトで有効になります。
+* `optionaloff` オプションのモジュールで、デフォルトで無効化されます。
 
 ### Additional Metadata
 
-To preserve metadata that cannot be inferred via file structure, two files exist. Default values will be generated when applicable. Customize to fit your needs. These values should be self explanatory. If further details are required, see the [distribution.json specification document][distro.md].
+ファイル構造から推測できないメタデータを保持するために、2つのファイルが存在する。デフォルト値は、該当する場合に生成されます。ニーズに合わせてカスタマイズしてください。これらの値は自明なはずです。さらに詳細が必要な場合は、[distribution.json仕様書][distro.md]を参照してください。
 
 #### ${ROOT}/meta/distrometa.json
 
-Represents the additiona metadata on the distribution object.
+ディストリビューションオブジェクトに追加されたメタデータを表します。
 
-A JSON schema is provided to assist editing this file. It should automatically be referenced when the default file is generated.
+このファイルを編集するためのJSONスキーマが提供されています。デフォルトのファイルが生成される際に、自動的に参照されるはずです。
 
 Sample:
 
@@ -250,9 +250,9 @@ Sample:
 
 #### servers/${YOUR_SERVER}/servermeta.json
 
-Represents the additional metadata on the server object (for a YOUR_SERVER).
+サーバーオブジェクトの追加メタデータを表します (YOUR_SERVERの場合)。
 
-A JSON schema is provided to assist editing this file. It should automatically be referenced when the default file is generated.
+このファイルの編集を支援するために、JSON スキーマが提供されています。このスキーマは、デフォルトのファイルが生成される際に自動的に参照されるはずです。
 
 Sample:
 
@@ -281,7 +281,7 @@ Sample:
 
 #### Untracked Files
 
-Untracked files is optional. MD5 hashes will not be generated for files matching the provided glob patterns. The launcher will not validate/update files without MD5 hashes.
+未トラックのファイルはオプションです。MD5 ハッシュは、指定されたグロブパターンに一致するファイルには生成されません。ランチャーは、MD5ハッシュのないファイルの検証/更新を行いません。
 
 ```json
 {
@@ -297,7 +297,7 @@ Untracked files is optional. MD5 hashes will not be generated for files matching
 }
 ```
 
-In the above example, all files of type `cfg` in the config directory will be untracked. Additionally, all files of type `yml` in the config directory and its subdirectories will be untracked. You can tweak these patterns to fit your needs, this is purely an example. The patterns will only be applied to the folders specified in `appliesTo`. As an example, valid values include `files`, `forgemods`, `libraries`, etc.
+上記の例では、config ディレクトリにある `cfg` タイプのファイルはすべてアントラックされます。さらに、config ディレクトリとそのサブディレクトリにある `yml` タイプのファイルはすべて追跡されなくなります。これらのパターンはあなたのニーズに合わせて調整することができます。パターンは `appliesTo` で指定されたフォルダーにのみ適用されます。例として、有効な値は `files`、`forgemods`、`libraries` などである。
 
 ```json
 {
@@ -319,13 +319,13 @@ In the above example, all files of type `cfg` in the config directory will be un
 }
 ```
 
-Another example where all `optionalon` forgemods are untracked. **Untracking mods is NOT recommended. This is an example ONLY.**
+もう一つの例は、すべての `optionalon` forgemods がアントラックされている場合です。**Untracking mods is NOT recommended. これはあくまで例です。
 
 ### Note on JSON Schemas
 
-The `$schema` property in a JSON file is a URL to a JSON schema file. This property is optional. Nebula provides schemas for internal types to make editing the JSON easier. Editors, such as Visual Studio Code, will use this schema file to validate the data and show useful information, like property descriptions. Valid properties will also be autocompleted. For detailed information, you may view the [JSON Schema Website](jsonschemawebsite).
+JSONファイルの `$schema` プロパティは、JSONスキーマファイルへのURLです。このプロパティはオプションです。NebulaはJSONの編集を容易にするために、内部型のためのスキーマを提供します。Visual Studio Code などのエディタでは、このスキーマファイルを用いてデータの検証を行い、プロパティの説明などの有用な情報を表示します。また、有効なプロパティはオートコンプリートされます。詳細については、[JSON Schema Website](jsonschemawebsite)を参照してください。
 
-Nebula will store JSON schemas in `${ROOT}/schemas`. This is so that they will always be in sync with your local version of Nebula. They will initially be generated by the `init root` command. To update the schemas, you can run the `generate schemas` command.
+Nebula は JSON スキーマを `${ROOT}/schemas` に格納する。これは、あなたのローカルバージョンの Nebula と常に同期するためである。スキーマは初期状態では `init root` コマンドで生成される。スキーマを更新するには、 `generate schemas` コマンドを実行する。
 
 
 [dotenvnpm]: https://www.npmjs.com/package/dotenv
